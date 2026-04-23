@@ -57,7 +57,29 @@ A **Faderbox** is the hardware side of Volumix — a small box with 5 potentiome
   <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/Midi_Controller_A-Camera_16.png" width="560" alt="Faderbox hardware">
 </div>
 
+---
 
+## Deej Users
+
+**Volumix** is built around the Arduino Nano and is fully compatible with existing **Deej** hardware builds. If you’re looking to migrate to a free solution with a modern, user-friendly GUI, Volumix makes it easy.
+
+Simply upload our .ino file to your Arduino, and you’re ready to go — no hardware changes required.
+
+## Hardware Wiring
+
+```
+Arduino Nano
+├── A0 ── Potentiometer 1 
+├── A1 ── Potentiometer 2 
+├── A2 ── Potentiometer 3 
+├── A3 ── Potentiometer 4 
+├── A4 ── Potentiometer 5 
+├── D2 ── Button 1
+├── D3 ── Button 2
+├── D4 ── Button 3
+├── D5 ── Button 4
+└── D6 ── Button 5
+```
 
 
 ---
@@ -80,7 +102,7 @@ Volumix **updates itself automatically** through GitHub. When a new version is r
 
 ## Using Volumix
 <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/TPP-Mono.png" width="85" align="right" />
-### Assigning apps to a slider
+Assigning apps to a slider
 
 1. Click any app pill below a slider (or the **+** on an empty one)
 2. The app picker shows everything currently playing audio and everything with an open session
