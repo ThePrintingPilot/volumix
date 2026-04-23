@@ -8,8 +8,6 @@
 
 [![Latest release](https://img.shields.io/github/v/release/ThePrintingPilot/volumix?color=22c55e&label=download&style=for-the-badge)](https://github.com/ThePrintingPilot/volumix/releases/latest)
 [![Windows](https://img.shields.io/badge/Windows%2010%2F11-grey?logo=windows&style=for-the-badge)](https://github.com/ThePrintingPilot/volumix/releases/latest)
-[![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
-
 </div>
 
 ---
@@ -30,6 +28,8 @@ No drivers. No cloud. No accounts. Just plug in the USB cable and you've got phy
 ---
 
 ## What it can do
+
+<img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/TPP-Mono.png" width="85" align="right" />
 
 - **5 physical sliders** — each bound to any app (or group of apps) you choose
 - **5 mute buttons** — instantly silence a channel without reaching for the mouse
@@ -79,7 +79,7 @@ Volumix **updates itself automatically** through GitHub. When a new version is r
 ---
 
 ## Using Volumix
-
+<img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/TPP-Mono.png" width="85" align="right" />
 ### Assigning apps to a slider
 
 1. Click any app pill below a slider (or the **+** on an empty one)
@@ -147,6 +147,7 @@ If it shows up in the Windows Volume Mixer, it'll work with Volumix.
 ---
 
 ## Support the project
+<img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/TPP-Mono.png" width="85" align="right" />
 
 If Volumix made your setup better, the best way to help is to:
 
@@ -155,7 +156,3 @@ If Volumix made your setup better, the best way to help is to:
 - 💡 **Suggest features** — I'm open to ideas
 
 ---
-
-## License
-
-MIT — do whatever you want with it. Attribution appreciated but not required.
