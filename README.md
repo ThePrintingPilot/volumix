@@ -14,7 +14,7 @@
 <a href="https://github.com/ThePrintingPilot/volumix/releases/latest"><img src="https://img.shields.io/github/v/release/ThePrintingPilot/volumix?color=22c55e&label=download&logo=github&logoColor=white" alt="Download" /></a>
   </p>
   <p>
-    <img src="https://img.shields.io/endpoint?url=https://bambu-light-mod.tomernassi.workers.dev/badge" alt="Active Devices" />
+    <img src="https://img.shields.io/endpoint?url=https://bambu-light-mod.tomernassi.workers.dev/volumix/badge" alt="Active Users" />
   </p>
 </div>
 
