@@ -6,8 +6,16 @@
 
 **Control the volume of every app on your PC with a real hardware mixer.**
 
-[![Latest release](https://img.shields.io/github/v/release/ThePrintingPilot/volumix?color=22c55e&label=download&style=for-the-badge)](https://github.com/ThePrintingPilot/volumix/releases/latest)
-[![Windows](https://img.shields.io/badge/Windows%2010%2F11-grey?logo=windows&style=for-the-badge)](https://github.com/ThePrintingPilot/volumix/releases/latest)
+</div>
+<div align="center">
+  <p>
+    <a href="https://theprintingpilot.com"><img src="https://img.shields.io/badge/Website-ThePrintingPilot-00e5a0?logo=googlechrome&logoColor=white" alt="Website" /></a> 
+    <a href="https://www.youtube.com/@ThePrintingPilot"><img src="https://img.shields.io/badge/YouTube-ThePrintingPilot-FF0000?logo=youtube&logoColor=white" alt="YouTube" /></a> 
+<a href="https://github.com/ThePrintingPilot/volumix/releases/latest"><img src="https://img.shields.io/github/v/release/ThePrintingPilot/volumix?color=22c55e&label=download&logo=github&logoColor=white" alt="Download" /></a>
+  </p>
+  <p>
+    <img src="https://img.shields.io/endpoint?url=https://bambu-light-mod.tomernassi.workers.dev/badge" alt="Active Devices" />
+  </p>
 </div>
 
 ---
@@ -102,7 +110,8 @@ Volumix **updates itself automatically** through GitHub. When a new version is r
 
 ## Using Volumix
 <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/TPP-Mono.png" width="85" align="right" />
-Assigning apps to a slider
+
+### Assigning apps to a slider
 
 1. Click any app pill below a slider (or the **+** on an empty one)
 2. The app picker shows everything currently playing audio and everything with an open session
