@@ -30,7 +30,7 @@ No drivers. No cloud. No accounts. Just plug in the USB cable and you've got phy
 
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix.png" width="720" alt="Volumix main UI">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-main.gif" width="720" alt="Volumix main UI">
 </div>
 
 ---
@@ -39,23 +39,28 @@ No drivers. No cloud. No accounts. Just plug in the USB cable and you've got phy
 
 <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/TPP-Mono.png" width="85" align="right" />
 
+### Hardware control
 - **5 physical sliders** — each bound to any app (or group of apps) you choose
 - **5 mute buttons** — instantly silence a channel without reaching for the mouse
 - **Master volume** control on any slider
+- **Mic & input device control** — assign your microphone to a slider; mute button hard-mutes it system-wide
+
+### Smart audio handling
 - **Multi-app per slider** — put Chrome + Firefox + Edge on one slider and it'll control all of them together
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/multi-app.png" width="150" alt="App picker window">
+</div>
+
+- **Custom slider names** — right-click any pill to rename it (e.g. "Browsers" or "Voice")
+- **Smart device switching** — switch from speakers to headphones and audio instantly snaps to whatever the Faderbox shows. No more sudden volume jumps when Windows remembers the last per-device setting
 - **Real app icons** — Volumix reads the actual icon from each running app's .exe
+
+### Quality of life
 - **Dark & light mode**
 - **Auto-connect** — Faderbox auto-reconnects on startup
 - **Start with Windows** — launches silently in the tray when you log in
 - **Works offline** — no internet connection ever needed after install
-- **Custom slider names** — right-click any pill to rename it. Got Chrome + Firefox on one slider? Call it "Browsers." Got Discord + Teams + Slack on another? Call it "Voice."
-- **Mic & input device control** — assign your microphone (or any input device) to a slider, just like an app. Mute button hard-mutes the mic at the Windows level.
-Smart device switching — switch from speakers to headphones and your audio instantly snaps to whatever the Faderbox shows. No more sudden volume jumps when Windows remembers the last per-device setting.
-
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/multi-app.png" width="100" alt="App picker window">
-</div>
 
 ---
 
@@ -75,6 +80,8 @@ A **Faderbox** is the hardware side of Volumix — a small box with 5 potentiome
 **Volumix** is built around the Arduino Nano and is fully compatible with existing **Deej** hardware builds. If you’re looking to migrate to a free solution with a modern, user-friendly GUI, Volumix makes it easy.
 
 Simply upload our .ino file to your Arduino, and you’re ready to go — no hardware changes required.
+
+---
 
 ## Hardware Wiring
 
@@ -139,38 +146,29 @@ Close the window and Volumix keeps running in the system tray. Right-click the t
 
 ### Naming your sliders
 
-Right-click any pill (the rounded button under each slider) → choose 
-**Rename…** to give the channel a custom name. Useful when one slider 
-controls multiple apps — instead of seeing "chrome +2" you can call it 
-"Browsers."
+Right-click any pill (the rounded button under each slider) → choose **Rename…** to give the channel a custom name. Useful when one slider controls multiple apps — instead of seeing "chrome +2" you can call it "Browsers."
 
 To go back to the default app name, right-click → **Clear label**.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/set-label.png" width="200" alt="Settings window">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-naming-slider.gif" width="200" alt="Right-click rename menu">
 </div>
 
 ### Controlling your microphone
 
-Open the app picker on any slider and look for the **Input devices** 
-section at the top. Every microphone or input device on your system shows 
-up there alongside your apps. Pick one, and that slider now controls 
-the mic's input level. The mute button hard-mutes the mic at the Windows 
-level — every app that's listening hears silence instantly.
+Open the app picker on any slider and look for the **Input devices** section at the top. Every microphone or input device on your system shows up there alongside your apps. Pick one, and that slider now controls the mic's input level. The mute button hard-mutes the mic at the Windows level — every app that's listening hears silence instantly.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/input-device.png" width="300" alt="Settings window">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/input-device.png" width="300" alt="Input devices in app picker">
 </div>
-
-
 
 ### Switching audio devices
 
-If you switch your default output (e.g. plug in headphones), Volumix 
-detects it and instantly re-applies your slider positions to the new 
-device — so the audio matches what your Faderbox shows, every time. 
-No more surprise loud blasts when Windows remembers the headphones 
-were at 100% from yesterday.
+If you switch your default output (e.g. plug in headphones), Volumix detects it and instantly re-applies your slider positions to the new device — so the audio matches what your Faderbox shows, every time. No more surprise loud blasts when Windows remembers the headphones were at 100% from yesterday.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/d365cc9aa12b47e3392caa1572125d86b39c93f1/images/device-switch.svg" width="700" alt="Slider stays at 70% — audio matches across device switch">
+</div>
 
 
 
@@ -180,7 +178,7 @@ were at 100% from yesterday.
 
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-setting.png" width="560" alt="Settings window">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-setting.gif" width="560" alt="Settings window">
 </div>
 
 
@@ -191,7 +189,6 @@ were at 100% from yesterday.
 | **Start minimized** | App starts in the tray instead of showing the window |
 | **Dark mode** | Dark-themed UI |
 | **Pot direction** | Flip individual sliders if they're wired backwards |
-| **Custom labels** | Right-click any pill to rename a slider |
 | **Check for updates** | Manually check GitHub for newer versions |
 | **Reset all settings** | Wipe everything and start over fresh |
 
