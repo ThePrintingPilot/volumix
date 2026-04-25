@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="800" height="240">
+  <style>
+    .panel { fill: #ffffff; stroke: #dddddd; stroke-width: 1; }
+    .label-small { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 11px; fill: #888888; font-weight: 500; letter-spacing: 0.5px; }
+    .label-text  { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 13px; fill: #444444; font-weight: 500; }
+    .label-after { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 13px; fill: #0070d4; font-weight: 600; }
+    .arrow       { fill: #888888; }
+    .track-bg    { fill: #c4c4c4; }
+    .track-fill  { fill: #1db954; }
+  </style>
+
+  <!-- LEFT PANEL: Speakers (before) -->
+  <rect class="panel" x="80" y="30" width="260" height="180" rx="10" ry="10"/>
+  <text class="label-small" x="100" y="55">SPEAKERS — 70%</text>
+  <text class="label-text"  x="142" y="92">Slider: 70%</text>
+
+  <!-- Slider track -->
+  <rect class="track-bg"   x="200" y="100" width="14" height="80" rx="7" ry="7"/>
+  <rect class="track-fill" x="200" y="124" width="14" height="56" rx="7" ry="7"/>
+
+  <text class="label-text" x="142" y="200">Audio: 70%</text>
+
+  <!-- ARROW between panels -->
+  <g transform="translate(380, 110)">
+    <line x1="0" y1="10" x2="35" y2="10" stroke="#888888" stroke-width="2"/>
+    <polygon class="arrow" points="35,4 45,10 35,16"/>
+  </g>
+
+  <!-- RIGHT PANEL: Headphones (after) -->
+  <rect class="panel" x="460" y="30" width="260" height="180" rx="10" ry="10"/>
+  <text class="label-small" x="480" y="55">HEADPHONES PLUGGED IN</text>
+  <text class="label-text"  x="522" y="92">Slider: 70%</text>
+
+  <!-- Slider track -->
+  <rect class="track-bg"   x="580" y="100" width="14" height="80" rx="7" ry="7"/>
+  <rect class="track-fill" x="580" y="124" width="14" height="56" rx="7" ry="7"/>
+
+  <text class="label-after" x="522" y="200">Audio: 70% ✓</text>
+</svg>
