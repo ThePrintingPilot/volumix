@@ -146,6 +146,10 @@ controls multiple apps — instead of seeing "chrome +2" you can call it
 
 To go back to the default app name, right-click → **Clear label**.
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/set-label.png" width="200" alt="Settings window">
+</div>
+
 ### Controlling your microphone
 
 Open the app picker on any slider and look for the **Input devices** 
@@ -153,6 +157,12 @@ section at the top. Every microphone or input device on your system shows
 up there alongside your apps. Pick one, and that slider now controls 
 the mic's input level. The mute button hard-mutes the mic at the Windows 
 level — every app that's listening hears silence instantly.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/input-device.png" width="300" alt="Settings window">
+</div>
+
+
 
 ### Switching audio devices
 
@@ -168,7 +178,7 @@ were at 100% from yesterday.
 
 ## Settings
 
-<!-- TODO: screenshot of settings window -->
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-setting.png" width="560" alt="Settings window">
 </div>
