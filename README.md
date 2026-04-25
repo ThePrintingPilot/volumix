@@ -48,6 +48,9 @@ No drivers. No cloud. No accounts. Just plug in the USB cable and you've got phy
 - **Auto-connect** — Faderbox auto-reconnects on startup
 - **Start with Windows** — launches silently in the tray when you log in
 - **Works offline** — no internet connection ever needed after install
+- **Custom slider names** — right-click any pill to rename it. Got Chrome + Firefox on one slider? Call it "Browsers." Got Discord + Teams + Slack on another? Call it "Voice."
+- **Mic & input device control** — assign your microphone (or any input device) to a slider, just like an app. Mute button hard-mutes the mic at the Windows level.
+Smart device switching — switch from speakers to headphones and your audio instantly snaps to whatever the Faderbox shows. No more sudden volume jumps when Windows remembers the last per-device setting.
 
 
 <div align="center">
@@ -134,6 +137,33 @@ Press any mute button on the Faderbox to instantly mute that channel. Press agai
 
 Close the window and Volumix keeps running in the system tray. Right-click the tray icon for quick access, or click it to show the window again.
 
+### Naming your sliders
+
+Right-click any pill (the rounded button under each slider) → choose 
+**Rename…** to give the channel a custom name. Useful when one slider 
+controls multiple apps — instead of seeing "chrome +2" you can call it 
+"Browsers."
+
+To go back to the default app name, right-click → **Clear label**.
+
+### Controlling your microphone
+
+Open the app picker on any slider and look for the **Input devices** 
+section at the top. Every microphone or input device on your system shows 
+up there alongside your apps. Pick one, and that slider now controls 
+the mic's input level. The mute button hard-mutes the mic at the Windows 
+level — every app that's listening hears silence instantly.
+
+### Switching audio devices
+
+If you switch your default output (e.g. plug in headphones), Volumix 
+detects it and instantly re-applies your slider positions to the new 
+device — so the audio matches what your Faderbox shows, every time. 
+No more surprise loud blasts when Windows remembers the headphones 
+were at 100% from yesterday.
+
+
+
 ---
 
 ## Settings
@@ -151,8 +181,10 @@ Close the window and Volumix keeps running in the system tray. Right-click the t
 | **Start minimized** | App starts in the tray instead of showing the window |
 | **Dark mode** | Dark-themed UI |
 | **Pot direction** | Flip individual sliders if they're wired backwards |
+| **Custom labels** | Right-click any pill to rename a slider |
 | **Check for updates** | Manually check GitHub for newer versions |
 | **Reset all settings** | Wipe everything and start over fresh |
+
 
 ---
 
@@ -173,6 +205,22 @@ On first run, Volumix compiles a tiny helper program using your system's built-i
 **Can I use this with DaVinci Resolve / OBS / any specific app?**
 If it shows up in the Windows Volume Mixer, it'll work with Volumix.
 
+**Why does my volume sometimes jump when I plug in headphones?**
+It shouldn't anymore — Volumix automatically re-applies your Faderbox 
+positions whenever you switch output devices. There's a brief ~200ms 
+window where Windows briefly uses its old per-device memory, but 
+Volumix corrects it immediately.
+
+**Can I rename a slider to show something other than the app name?**
+Yes — right-click the app pill under the slider, choose Rename…, type 
+your label (up to 20 characters), press Enter. Right-click → Clear 
+label to revert.
+
+**Does Volumix control my microphone?**
+Yes. When you open the app picker, you'll see an "Input devices" 
+section at the top with every microphone and input device on your 
+system. Assign one to a slider and you'll control its input volume; 
+the mute button hard-mutes the mic system-wide.
 
 
 ---
