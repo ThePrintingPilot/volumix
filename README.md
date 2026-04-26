@@ -198,6 +198,17 @@ By default each slider sends a different CC number (1–5). You can change these
 
 A MIDI-enabled slider has a green fill, a green-bordered knob with **MIDI** inside it, and the pill below shows `CC <number>` (or your custom label, if you've set one).
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/midicontroll.gif" width="560" alt="Settings window">
+</div>
+
+
+### VoiceMeter Example
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/midivoicemetertest.gif" width="1000" alt="Settings window">
+</div>
+
 ---
 
 ## Settings
