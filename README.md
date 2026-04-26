@@ -203,7 +203,7 @@ A MIDI-enabled slider has a green fill, a green-bordered knob with **MIDI** insi
 </div>
 
 
-### VoiceMeter Example
+### VoiceMeeter Example
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/midivoicemetertest.gif" width="1000" alt="Settings window">
