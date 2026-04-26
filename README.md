@@ -215,7 +215,7 @@ A MIDI-enabled slider has a green fill, a green-bordered knob with **MIDI** insi
 
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-setting.png" width="560" alt="Settings window">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-setting.gif" width="560" alt="Settings window">
 </div>
 
 
