@@ -30,7 +30,7 @@ No drivers. No cloud. No accounts. Just plug in the USB cable and you've got phy
 
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-main.gif" width="720" alt="Volumix main UI">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix.png" width="720" alt="Volumix main UI">
 </div>
 
 ---
@@ -47,11 +47,6 @@ No drivers. No cloud. No accounts. Just plug in the USB cable and you've got phy
 
 ### Smart audio handling
 - **Multi-app per slider** — put Chrome + Firefox + Edge on one slider and it'll control all of them together
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/multi-app.png" width="150" alt="App picker window">
-</div>
-
 - **Custom slider names** — right-click any pill to rename it (e.g. "Browsers" or "Voice")
 - **Smart device switching** — switch from speakers to headphones and audio instantly snaps to whatever the Faderbox shows. No more sudden volume jumps when Windows remembers the last per-device setting
 - **Real app icons** — Volumix reads the actual icon from each running app's .exe
@@ -61,6 +56,11 @@ No drivers. No cloud. No accounts. Just plug in the USB cable and you've got phy
 - **Auto-connect** — Faderbox auto-reconnects on startup
 - **Start with Windows** — launches silently in the tray when you log in
 - **Works offline** — no internet connection ever needed after install
+
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/multi-app.png" width="100" alt="App picker window">
+</div>
 
 ---
 
@@ -151,7 +151,7 @@ Right-click any pill (the rounded button under each slider) → choose **Rename�
 To go back to the default app name, right-click → **Clear label**.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-naming-slider.gif" width="200" alt="Right-click rename menu">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/set-label.png" width="200" alt="Right-click rename menu">
 </div>
 
 ### Controlling your microphone
@@ -167,10 +167,36 @@ Open the app picker on any slider and look for the **Input devices** section at 
 If you switch your default output (e.g. plug in headphones), Volumix detects it and instantly re-applies your slider positions to the new device — so the audio matches what your Faderbox shows, every time. No more surprise loud blasts when Windows remembers the headphones were at 100% from yesterday.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/d365cc9aa12b47e3392caa1572125d86b39c93f1/images/device-switch.svg" width="700" alt="Slider stays at 70% — audio matches across device switch">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/device-switch.svg" width="600" alt="Slider stays at 70% — audio matches across device switch">
 </div>
 
 
+
+---
+
+## MIDI output (advanced)
+
+Volumix can also send **MIDI Control Change** messages instead of controlling Windows audio. This lets your Faderbox drive any app that accepts MIDI input — VoiceMeeter, OBS, Streamlabs, music DAWs (Reaper, Ableton, FL Studio), VTube Studio, Stream Deck, and more.
+
+### How it works
+
+A slider in **MIDI mode** stops controlling Windows audio entirely. Instead, it broadcasts MIDI CC messages on a virtual MIDI port. Your target app picks them up via its "MIDI Learn" feature.
+
+### One-time setup
+
+Volumix doesn't ship its own MIDI driver, but Windows has many free options. We recommend **LoopMIDI** by Tobias Erichsen.
+
+1. Download and install [LoopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) (free)
+2. Launch LoopMIDI, type a name (e.g. `volumix`) in the bottom box, click the **+** button to create the port
+3. Open Volumix → **Settings → MIDI** → pick your new port from the dropdown
+4. For each slider you want to use as MIDI, flip its toggle on — the slider turns **green** and shows `MIDI` inside the knob
+5. In your target app (VoiceMeeter, OBS, etc.), use **MIDI Learn**, then move the Volumix slider to bind it
+
+By default each slider sends a different CC number (1–5). You can change these per channel in Settings → MIDI if your target app needs specific values.
+
+### What it looks like
+
+A MIDI-enabled slider has a green fill, a green-bordered knob with **MIDI** inside it, and the pill below shows `CC <number>` (or your custom label, if you've set one).
 
 ---
 
@@ -178,7 +204,7 @@ If you switch your default output (e.g. plug in headphones), Volumix detects it 
 
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-setting.gif" width="560" alt="Settings window">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-setting.png" width="560" alt="Settings window">
 </div>
 
 
@@ -189,6 +215,7 @@ If you switch your default output (e.g. plug in headphones), Volumix detects it 
 | **Start minimized** | App starts in the tray instead of showing the window |
 | **Dark mode** | Dark-themed UI |
 | **Pot direction** | Flip individual sliders if they're wired backwards |
+| **MIDI output** | Send Control Change messages instead of controlling Windows audio (per-slider toggle) |
 | **Check for updates** | Manually check GitHub for newer versions |
 | **Reset all settings** | Wipe everything and start over fresh |
 
@@ -228,6 +255,12 @@ Yes. When you open the app picker, you'll see an "Input devices"
 section at the top with every microphone and input device on your 
 system. Assign one to a slider and you'll control its input volume; 
 the mute button hard-mutes the mic system-wide.
+
+**Can I use Volumix with VoiceMeeter / OBS / a DAW?**
+Yes — turn on MIDI mode for any slider in **Settings → MIDI**. The slider stops controlling Windows audio and instead sends MIDI Control Change messages, which any MIDI-aware app can listen to. You'll need a free virtual MIDI port like [LoopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) — see the MIDI section above for the full setup.
+
+**My LoopMIDI port isn't showing up in Volumix.**
+First try clicking **Refresh ports** in **Settings → MIDI**. If that doesn't work, restart your PC — Windows' MIDI subsystem occasionally caches its device list and a reboot forces it to re-register newly-created virtual ports.
 
 
 ---
