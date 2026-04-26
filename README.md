@@ -11,6 +11,7 @@
   <p>
     <a href="https://theprintingpilot.com"><img src="https://img.shields.io/badge/Website-ThePrintingPilot-00e5a0?logo=googlechrome&logoColor=white" alt="Website" /></a> 
     <a href="https://www.youtube.com/@ThePrintingPilot"><img src="https://img.shields.io/badge/YouTube-ThePrintingPilot-FF0000?logo=youtube&logoColor=white" alt="YouTube" /></a> 
+        <a href="https://discord.gg/eNYyHBM7cM"><img src="https://img.shields.io/badge/Discord-Volumix-5865F2?logo=discord&logoColor=white" alt="Discord" /></a> 
 <a href="https://github.com/ThePrintingPilot/volumix/releases/latest"><img src="https://img.shields.io/github/v/release/ThePrintingPilot/volumix?color=22c55e&label=download&logo=github&logoColor=white" alt="Download" /></a>
   </p>
   <p>
@@ -115,6 +116,21 @@ Arduino Nano
 5. Assign apps to each slider — done
 
 Volumix **updates itself automatically** through GitHub. When a new version is released, a notification slides in from the corner. One click to install.
+
+
+---
+
+<table align="center" width="720">
+  <tr>
+    <td width="160" align="center">
+      <a href="https://discord.gg/eNYyHBM7cM"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white&style=for-the-badge" alt="Discord" height="48"/></a>
+    </td>
+    <td>
+      <strong>Join the Volumix Discord</strong><br/>
+      Setup help, build showcases, feature requests, and chats with other Faderbox users.
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -284,5 +300,11 @@ If Volumix made your setup better, the best way to help is to:
 - ⭐ **Star this repo** so other people find it
 - 🐛 **Report bugs** in [Issues](https://github.com/ThePrintingPilot/volumix/issues)
 - 💡 **Suggest features** — I'm open to ideas
+<br/>
+
+<div align="center">
+  <p>Got a Faderbox question, build to show off, or feature idea?</p>
+  <a href="https://discord.gg/eNYyHBM7cM"><img src="https://img.shields.io/badge/Join%20the%20Volumix%20Discord-5865F2?logo=discord&logoColor=white&style=for-the-badge" alt="Join the Volumix Discord" /></a>
+</div>
 
 ---
