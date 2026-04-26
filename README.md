@@ -30,7 +30,7 @@ No drivers. No cloud. No accounts. Just plug in the USB cable and you've got phy
 
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix.png" width="720" alt="Volumix main UI">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-main.gif" width="720" alt="Volumix main UI">
 </div>
 
 ---
@@ -151,7 +151,7 @@ Right-click any pill (the rounded button under each slider) → choose **Rename�
 To go back to the default app name, right-click → **Clear label**.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/set-label.png" width="200" alt="Right-click rename menu">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-naming-slider.gif" width="200" alt="Right-click rename menu">
 </div>
 
 ### Controlling your microphone
