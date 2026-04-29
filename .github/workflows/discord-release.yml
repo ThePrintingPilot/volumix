@@ -15,7 +15,6 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           TAG_NAME: ${{ github.event.release.tag_name || github.ref_name }}
-          RELEASE_NAME: ${{ github.event.release.name || 'Manual Test' }}
           RELEASE_URL: ${{ github.event.release.html_url || 'https://github.com/ThePrintingPilot/volumix/releases/latest' }}
         run: |
           curl -H "Content-Type: application/json" \
