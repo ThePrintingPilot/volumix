@@ -5,9 +5,6 @@ on:
   release:
     types:
       - published
-  push:
-    tags:
-      - "v*"
 
 jobs:
   discord:
@@ -17,7 +14,10 @@ jobs:
       - name: Send Discord message
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TAG_NAME: ${{ github.event.release.tag_name || github.ref_name }}
+          RELEASE_NAME: ${{ github.event.release.name || 'Manual Test' }}
+          RELEASE_URL: ${{ github.event.release.html_url || 'https://github.com/ThePrintingPilot/volumix/releases/latest' }}
         run: |
           curl -H "Content-Type: application/json" \
-               -d '{"content":"🎚️ **Volumix Update Released!**\n\nA new version of **Volumix** is now available.\n\n📦 Download it here:\nhttps://github.com/ThePrintingPilot/volumix/releases/latest"}' \
+               -d "{\"content\":\"🎚️ **Volumix Update is Live!**\n\nA new version of **Volumix** has just been released.\n\n**Version:** $TAG_NAME\n**Release:** $RELEASE_NAME\n\n📦 **Download here:**\n$RELEASE_URL\n\nIf you try it, feel free to share feedback or report issues on GitHub.\"}" \
                "$DISCORD_WEBHOOK_URL"
