@@ -22,13 +22,13 @@ jobs:
           jq -n \
             --arg content "🎚️ **Volumix Update Released!**
 
-          A new version of **Volumix** is now available.
+A new version of **Volumix** is now available.
 
-          **Version:** $RELEASE_TAG
-          **Release:** $RELEASE_NAME
+**Version:** $RELEASE_TAG
+**Release:** $RELEASE_NAME
 
-          📦 Download it here:
-          $RELEASE_URL" \
+📦 Download it here:
+$RELEASE_URL" \
             '{content: $content}' > payload.json
 
           curl -H "Content-Type: application/json" \
