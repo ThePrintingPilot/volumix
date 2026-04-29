@@ -3,7 +3,8 @@ name: Announce Release on Discord
 on:
   workflow_dispatch:
   release:
-    types: [published]
+    types:
+      - published
 
 jobs:
   discord:
