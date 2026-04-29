@@ -1,0 +1,40 @@
+name: Announce Release on Discord
+
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+  push:
+    tags:
+      - "v*"
+      - "[0-9]*"
+
+jobs:
+  discord:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Discord release message
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RELEASE_NAME: ${{ github.event.release.name || github.ref_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || github.ref_name }}
+          RELEASE_URL: ${{ github.event.release.html_url || format('{0}/{1}/releases/tag/{2}', github.server_url, github.repository, github.ref_name) }}
+          REPO_NAME: ${{ github.repository }}
+        run: |
+          jq -n \
+            --arg content "🎚️ **Volumix Update Released!**
+
+A new version of **Volumix** is now available.
+
+**Version:** $RELEASE_TAG
+**Release:** $RELEASE_NAME
+
+📦 Download it here:
+$RELEASE_URL" \
+            '{content: $content}' > payload.json
+
+          curl -H "Content-Type: application/json" \
+               -d @payload.json \
+               "$DISCORD_WEBHOOK_URL"
