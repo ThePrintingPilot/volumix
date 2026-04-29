@@ -23,7 +23,6 @@ jobs:
 
           A new version of **Volumix** is now available.
 
-          **Repo:** $REPO_NAME
           **Version:** $RELEASE_TAG
           **Release:** $RELEASE_NAME
 
