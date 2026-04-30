@@ -80,7 +80,7 @@ A **Faderbox** is the hardware side of Volumix — a small box with 5 potentiome
 
 **Volumix** is built around the Arduino Nano and is fully compatible with existing **Deej** hardware builds. If you’re looking to migrate to a free solution with a modern, user-friendly GUI, Volumix makes it easy.
 
-Simply upload our .ino file to your Arduino, and you’re ready to go — no hardware changes required.
+Simply upload our **.ino** file (from the open-firmware folder) to your Arduino, and you’re ready to go — no hardware changes required.
 
 ---
 
