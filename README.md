@@ -94,25 +94,15 @@ Arduino Nano
 ```
 ---
 
-## What's a Faderbox?
+## Volumix Faderbox
 
 A **Faderbox** is the hardware side of Volumix — a small box with 5 potentiometer sliders and 5 push buttons. The MCU inside talks to your PC over USB, and Volumix listens.
 
-The original Faderbox uses an **Arduino Nano** and is fully compatible with existing Deej-style builds. The new **Volumix Faderbox** uses an **ESP32-S3** and adds native USB MIDI, addressable RGB LEDs, on-device calibration, and over-the-air firmware updates.
-
+The Volumix Faderbox is the official hardware Volumix is designed around. It's a drop-in replacement for the original Nano build with a more capable MCU (ESP32-S3) that unlocks a bunch of features the Nano can't do.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/Midi_Controller_A-Camera_16.png" width="560" alt="Faderbox hardware">
 </div>
-
-
----
-
-## Volumix Faderbox
-
-The Volumix Faderbox is the official hardware Volumix is designed around. It's a drop-in replacement for the original Nano build with a more capable MCU (ESP32-S3) that unlocks a bunch of features the Nano can't do.
-
-
 
 
 ### Native USB MIDI
@@ -125,7 +115,7 @@ The Volumix Faderbox shows up in your PC as a real MIDI device — same as any U
 
 <!-- IMAGE PLACEHOLDER: Screenshot of a DAW or Voicemeeter showing "Volumix Faderbox" in the MIDI input dropdown -->
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-native-midi.png" width="560" alt="Volumix Faderbox listed as native MIDI device">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-native-midi.png.jpg" width="560" alt="Volumix Faderbox listed as native MIDI device">
 </div>
 
 ### MIDI buttons
