@@ -65,17 +65,6 @@ No drivers. No cloud. No accounts. Just plug in the USB cable and you've got phy
 
 ---
 
-## What's a Faderbox?
-
-A **Faderbox** is the hardware side of Volumix — a small box with 5 potentiometer sliders and 5 push buttons, wired up to an **Arduino Nano**. The Nano talks to your PC over USB, and Volumix listens.
-
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/Midi_Controller_A-Camera_16.png" width="560" alt="Faderbox hardware">
-</div>
-
----
-
 ## DIY builders & Deej users
 
 **Volumix** is built around the Arduino Nano and is fully compatible with existing **Deej** hardware builds. Want to build your own Faderbox, or migrate from Deej to a modern, free GUI? Both work the same way.
@@ -86,7 +75,9 @@ Note: open firmware doesn't include the auto-update handshake, so Volumix won't 
 
 ---
 
-## Hardware Wiring
+## Hardware Wiring (Nano DIY build)
+
+If you're building your own Nano-based Faderbox or coming from a Deej setup, here's the standard pinout. **Volumix Faderbox owners can skip this section** — your hardware is pre-wired.
 
 ```
 Arduino Nano
@@ -101,7 +92,115 @@ Arduino Nano
 ├── D5 ── Button 4
 └── D6 ── Button 5
 ```
+---
 
+## What's a Faderbox?
+
+A **Faderbox** is the hardware side of Volumix — a small box with 5 potentiometer sliders and 5 push buttons. The MCU inside talks to your PC over USB, and Volumix listens.
+
+The original Faderbox uses an **Arduino Nano** and is fully compatible with existing Deej-style builds. The new **Volumix Faderbox** uses an **ESP32-S3** and adds native USB MIDI, addressable RGB LEDs, on-device calibration, and over-the-air firmware updates.
+
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/Midi_Controller_A-Camera_16.png" width="560" alt="Faderbox hardware">
+</div>
+
+
+---
+
+## Volumix Faderbox
+
+The Volumix Faderbox is the official hardware Volumix is designed around. It's a drop-in replacement for the original Nano build with a more capable MCU (ESP32-S3) that unlocks a bunch of features the Nano can't do.
+
+
+
+
+### Native USB MIDI
+
+The Volumix Faderbox shows up in your PC as a real MIDI device — same as any USB MIDI controller. No drivers, no LoopMIDI, no virtual ports. Your DAW, Voicemeeter, OBS, and any other MIDI-aware software see **"Volumix Faderbox"** directly in their MIDI input list.
+
+- Each slider sends MIDI CC (channels 1–5 by default)
+- MIDI mode is per-channel — mix audio sliders and MIDI sliders on the same device
+- The hardware remembers which channels are in MIDI mode across reboots and PC swaps
+
+<!-- IMAGE PLACEHOLDER: Screenshot of a DAW or Voicemeeter showing "Volumix Faderbox" in the MIDI input dropdown -->
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-native-midi.png" width="560" alt="Volumix Faderbox listed as native MIDI device">
+</div>
+
+### MIDI buttons
+
+When a channel is in MIDI mode, its mute button doubles as a **MIDI note** trigger with toggle behavior — first press = note-on, second press = note-off. Channels 1–5 use notes C4–E4 (60–64) on MIDI channel 1.
+
+Perfect for DAW transport controls (play, record, loop), Voicemeeter macro buttons, OBS scene switching, or anything else triggered by a MIDI note.
+
+### LED system
+
+Each of the 5 sliders has an addressable RGB LED beside it. The Faderbox has three LED modes:
+
+**Auto** — colors based on channel state:
+- White when the channel has an app assigned and is playing
+- Red when muted
+- Green when in MIDI mode and the button is idle
+- Pink when in MIDI mode and the button is toggled on
+- Off when nothing is assigned
+
+**Semi-auto** — same state logic, but you pick the colors yourself.
+
+**Manual** — pick a static color per LED, ignoring channel state. In Manual mode you can also enable one of **7 animated effects**:
+- **Solid** — your 5 colors stay put
+- **Rainbow** — all LEDs cycle through hues together
+- **Breathing** — each LED's color gently fades in and out
+- **Wave** — rainbow flows across the strip
+- **Comet** — single bright LED bounces back and forth
+- **Chase** — LEDs light up sequentially
+- **Twinkle** — random soft fade in and out per LED
+
+Each effect has a **speed slider** (1–10) and a **global brightness** control. The Faderbox animates everything locally, so effects stay smooth even when Volumix isn't running.
+
+A **"Flip MIDI LED state"** toggle is also available per channel — useful when downstream software (like Voicemeeter PTT) treats "button on" as "feature off" and you want the LED color to match what the software actually shows.
+
+<!-- IMAGE PLACEHOLDER: GIF of the LED system in action — could show the three modes, or just the 7 effects cycling -->
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-led-effects.gif" width="560" alt="LED effects on the Volumix Faderbox">
+</div>
+
+### Slider calibration
+
+Every potentiometer has slightly different electrical limits — most don't reach the full 0V or 3.3V at the ends of their travel, leaving "dead zones" where the slider moves but the output doesn't change. The Volumix Faderbox includes a **step-by-step calibration wizard** that captures each slider's true minimum and maximum:
+
+1. Open **Settings → Calibration**
+2. Click **Start calibration**
+3. Move slider 1 to the bottom → click **Capture min**
+4. Move slider 1 to the top → click **Capture max**
+5. Repeat for sliders 2–5
+
+After calibration, you get clean 0–100% travel on every slider with no dead zones. Calibration is stored in firmware and survives reflashing the app, plugging into a different PC, or moving the device between machines.
+
+<!-- IMAGE PLACEHOLDER: Screenshot of the Calibration wizard mid-flow with the live ADC bar and Capture button -->
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-calibration.gif" width="560" alt="Calibration wizard">
+</div>
+
+### Pot direction flip (software)
+
+If a slider moves the wrong way, flip it in **Settings → Channels** — no need to re-solder. The Faderbox remembers the direction settings on-device, so the inversion follows the hardware to any PC.
+
+### Automatic firmware updates
+
+Volumix detects when newer firmware is available for your Faderbox and updates it directly over USB — no Arduino IDE, no toolchain, nothing to install. The app:
+
+1. Checks the bundled firmware version against what's currently on the device
+2. If there's an update, shows a notification
+3. One click → resets the chip into bootloader mode, flashes the new firmware, reboots
+4. The Faderbox comes back online with the new firmware in about 15 seconds
+
+If a flash fails (e.g. flaky USB cable), Volumix automatically retries — no need to recover manually.
+
+<!-- IMAGE PLACEHOLDER: Screenshot of the firmware update notification or the in-progress flash dialog -->
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/volumix-firmware-update.gif" width="560" alt="In-app firmware update">
+</div>
 
 ---
 
@@ -192,23 +291,29 @@ If you switch your default output (e.g. plug in headphones), Volumix detects it 
 
 ---
 
-## MIDI output (advanced)
+## MIDI output
 
-Volumix can also send **MIDI Control Change** messages instead of controlling Windows audio. This lets your Faderbox drive any app that accepts MIDI input — VoiceMeeter, OBS, Streamlabs, music DAWs (Reaper, Ableton, FL Studio), VTube Studio, Stream Deck, and more.
+Volumix can send **MIDI Control Change** messages instead of (or alongside) controlling Windows audio. This lets your Faderbox drive any app that accepts MIDI input — Voicemeeter, OBS, Streamlabs, music DAWs (Reaper, Ableton, FL Studio), VTube Studio, Stream Deck, and more.
 
-### How it works
+### Volumix Faderbox (native USB MIDI)
 
-A slider in **MIDI mode** stops controlling Windows audio entirely. Instead, it broadcasts MIDI CC messages on a virtual MIDI port. Your target app picks them up via its "MIDI Learn" feature.
+If you have the official Volumix Faderbox, MIDI works out of the box:
 
-### One-time setup
+1. Open Volumix → **Settings → MIDI** → toggle the channels you want in MIDI mode
+2. In your target app, pick **"Volumix Faderbox"** from the MIDI input list
+3. Use **MIDI Learn**, move a Volumix slider, done
 
-Volumix doesn't ship its own MIDI driver, but Windows has many free options. We recommend **LoopMIDI** by Tobias Erichsen.
+No virtual ports, no extra software, no setup. The Faderbox shows up alongside any other USB MIDI controller you might have.
+
+### Nano DIY builds (via LoopMIDI)
+
+The Nano doesn't have native MIDI, so it routes MIDI through Volumix using a free virtual port. We recommend **LoopMIDI** by Tobias Erichsen:
 
 1. Download and install [LoopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) (free)
 2. Launch LoopMIDI, type a name (e.g. `volumix`) in the bottom box, click the **+** button to create the port
 3. Open Volumix → **Settings → MIDI** → pick your new port from the dropdown
 4. For each slider you want to use as MIDI, flip its toggle on — the slider turns **green** and shows `MIDI` inside the knob
-5. In your target app (VoiceMeeter, OBS, etc.), use **MIDI Learn**, then move the Volumix slider to bind it
+5. In your target app, use **MIDI Learn**, then move the Volumix slider to bind it
 
 By default each slider sends a different CC number (1–5). You can change these per channel in Settings → MIDI if your target app needs specific values.
 
@@ -221,7 +326,7 @@ A MIDI-enabled slider has a green fill, a green-bordered knob with **MIDI** insi
 </div>
 
 
-### VoiceMeeter Example
+### Voicemeeter Example
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/ThePrintingPilot/volumix/refs/heads/main/images/midivoicemetertest.gif" width="1000" alt="Settings window">
@@ -244,8 +349,10 @@ A MIDI-enabled slider has a green fill, a green-bordered knob with **MIDI** insi
 | **Start minimized** | App starts in the tray instead of showing the window |
 | **Dark mode** | Dark-themed UI |
 | **Pot direction** | Flip individual sliders if they're wired backwards |
+| **Calibration** *(Faderbox only)* | Step-by-step wizard to capture each slider's true min/max range |
 | **MIDI output** | Send Control Change messages instead of controlling Windows audio (per-slider toggle) |
-| **Check for updates** | Manually check GitHub for newer versions |
+| **Lights** *(Faderbox only)* | LED mode, colors, brightness, effects, and per-channel flip toggles |
+| **Check for updates** | Manually check GitHub for newer app and firmware versions |
 | **Reset all settings** | Wipe everything and start over fresh |
 
 
@@ -254,7 +361,7 @@ A MIDI-enabled slider has a green fill, a green-bordered knob with **MIDI** insi
 ## FAQ
 
 **Do I need to install any drivers?**
-No. Arduino Nanos with the standard CH340 chip are recognized by Windows 10/11 out of the box.
+No. Arduino Nanos with the standard CH340 chip are recognized by Windows 10/11 out of the box. The Volumix Faderbox uses native USB and doesn't need drivers either.
 
 **Does Volumix work on Mac or Linux?**
 Not yet. Volumix uses Windows-specific audio APIs (WASAPI). Cross-platform support isn't on the roadmap right now.
@@ -269,27 +376,31 @@ On first run, Volumix compiles a tiny helper program using your system's built-i
 If it shows up in the Windows Volume Mixer, it'll work with Volumix.
 
 **Why does my volume sometimes jump when I plug in headphones?**
-It shouldn't anymore — Volumix automatically re-applies your Faderbox 
-positions whenever you switch output devices. There's a brief ~200ms 
-window where Windows briefly uses its old per-device memory, but 
-Volumix corrects it immediately.
+It shouldn't anymore — Volumix automatically re-applies your Faderbox positions whenever you switch output devices. There's a brief ~200ms window where Windows briefly uses its old per-device memory, but Volumix corrects it immediately.
 
 **Can I rename a slider to show something other than the app name?**
-Yes — right-click the app pill under the slider, choose Rename…, type 
-your label (up to 20 characters), press Enter. Right-click → Clear 
-label to revert.
+Yes — right-click the app pill under the slider, choose Rename…, type your label (up to 20 characters), press Enter. Right-click → Clear label to revert.
 
 **Does Volumix control my microphone?**
-Yes. When you open the app picker, you'll see an "Input devices" 
-section at the top with every microphone and input device on your 
-system. Assign one to a slider and you'll control its input volume; 
-the mute button hard-mutes the mic system-wide.
+Yes. When you open the app picker, you'll see an "Input devices" section at the top with every microphone and input device on your system. Assign one to a slider and you'll control its input volume; the mute button hard-mutes the mic system-wide.
 
-**Can I use Volumix with VoiceMeeter / OBS / a DAW?**
-Yes — turn on MIDI mode for any slider in **Settings → MIDI**. The slider stops controlling Windows audio and instead sends MIDI Control Change messages, which any MIDI-aware app can listen to. You'll need a free virtual MIDI port like [LoopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) — see the MIDI section above for the full setup.
+**Can I use Volumix with Voicemeeter / OBS / a DAW?**
+Yes — turn on MIDI mode for any slider in **Settings → MIDI**. The slider stops controlling Windows audio and instead sends MIDI Control Change messages, which any MIDI-aware app can listen to. On the Volumix Faderbox this works natively. On a Nano build you'll need a free virtual MIDI port like [LoopMIDI](https://www.tobias-erichsen.de/software/loopmidi.html) — see the MIDI section above for the full setup.
+
+**Do I need LoopMIDI for the Volumix Faderbox?**
+No. The Volumix Faderbox is a native USB MIDI device — it shows up directly in your DAW/OBS/Voicemeeter MIDI input list. LoopMIDI is only needed for Nano DIY builds.
+
+**What does calibration do?**
+Most slider potentiometers don't perfectly hit 0V or 3.3V at their physical limits, leaving small dead zones at the top or bottom of travel. Calibration captures each slider's actual range so 0% and 100% line up exactly with the physical ends. The setting is stored in firmware, so it travels with the hardware. *(Volumix Faderbox only.)*
+
+**How do firmware updates work?**
+For the Volumix Faderbox, Volumix bundles the latest firmware with the app and detects when your hardware is running an older version. One click in Settings updates the firmware automatically over USB. For Nano DIY builds, you handle firmware updates yourself via Arduino IDE.
 
 **My LoopMIDI port isn't showing up in Volumix.**
 First try clicking **Refresh ports** in **Settings → MIDI**. If that doesn't work, restart your PC — Windows' MIDI subsystem occasionally caches its device list and a reboot forces it to re-register newly-created virtual ports.
+
+**Does the LED system work without Volumix running?**
+The LEDs reflect Volumix-driven state (mute/active/MIDI), so they need Volumix running for state-based modes (Auto, Semi-auto). **Manual mode and effects** keep running on the Faderbox even when Volumix is closed — once you set an effect, the firmware animates it locally.
 
 
 ---
